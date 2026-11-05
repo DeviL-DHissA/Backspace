@@ -1,0 +1,14 @@
+import { ArrowUpRight } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
+import { servicesData } from '../data/services';
+import { useReducedMotionPreference } from '../hooks/useReducedMotionPreference';
+import { MotionPoster } from '../components/motion/MotionPoster';
+
+export function Services() {
+  const reduceMotion = useReducedMotionPreference();
+  return <section className="page-shell wrap services-page"><MotionPoster kind="services" /><div className="page-head"><div><p className="eyebrow">What we bring</p><h1>Make space for<br /><em>what’s next.</em></h1></div><p className="page-lede">Creative thinking, careful craft, and the technical know-how to carry a good idea all the way through.</p></div>
+    <div className="service-detail-list">{servicesData.map((service, i) => <motion.article className="service-detail" key={service.id} initial={reduceMotion ? false : { opacity: 0, transform: `translate3d(${i % 2 ? 42 : -42}px, 0, 0)` }} whileInView={{ opacity: 1, transform: 'translate3d(0, 0, 0)' }} viewport={{ once: true, amount: 0.18 }} transition={{ duration: reduceMotion ? 0 : 0.8, delay: reduceMotion ? 0 : i * 0.12, ease: [0.23, 1, 0.32, 1] }}><motion.div className={`service-stamp stamp-${i}`} initial={reduceMotion ? false : { transform: 'rotate(-24deg) scale(.72)' }} whileInView={{ transform: 'rotate(0deg) scale(1)' }} viewport={{ once: true }} transition={{ duration: reduceMotion ? 0 : 1, delay: reduceMotion ? 0 : i * 0.12, ease: [0.23, 1, 0.32, 1] }}><span>0{i + 1}</span><b>{['MOTION', 'VISUAL', 'SYSTEMS'][i]}</b></motion.div><div className="service-detail-main"><p className="eyebrow">{service.discipline}</p><h2>{service.title}</h2><p className="service-tagline">{service.tagline}</p><p>{service.description.replace(/\bI\b/g, 'we').replace(/\bmy\b/gi, 'our')}</p><details><summary>What’s included <ArrowUpRight size={15} /></summary><div className="service-includes"><ul>{service.capabilities.map(item => <li key={item}>{item}</li>)}</ul><div><h3>Tools & workflow</h3><p>{service.tools.join(' · ')}</p>{service.workflow.map(step => <p className="workflow-step" key={step.step}><b>{step.step} / {step.title}</b><br />{step.desc}</p>)}</div></div></details></div></motion.article>)}</div>
+    <motion.div className="service-cta" initial={reduceMotion ? false : { opacity: 0, transform: 'translate3d(0, 34px, 0) scale(.985)' }} whileInView={{ opacity: 1, transform: 'translate3d(0, 0, 0) scale(1)' }} viewport={{ once: true }} transition={{ duration: reduceMotion ? 0 : 0.75, ease: [0.23, 1, 0.32, 1] }}><div><p className="eyebrow">Got something in mind?</p><h2>Let’s make room<br />for a good idea.</h2></div><Link className="button button-dark" to="/contact">Start a project <ArrowUpRight size={18} /></Link></motion.div>
+  </section>;
+}
