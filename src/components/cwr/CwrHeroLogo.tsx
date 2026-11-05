@@ -48,7 +48,7 @@ export const CwrHeroLogo: React.FC = () => {
         className="relative z-10 w-full flex items-center justify-center filter drop-shadow-[0_25px_40px_rgba(0,0,0,0.9)] drop-shadow-[0_0_45px_rgba(16,185,129,0.35)] drop-shadow-[0_0_15px_rgba(52,211,153,0.4)]"
       >
         <img
-          src="/assets/images/cwr_logo.webp"
+          src={`${import.meta.env.BASE_URL}assets/images/cwr_logo.webp`}
           alt="Official CWR Network Floating Island Logo"
           className="w-full max-h-[460px] sm:max-h-[520px] object-contain transition-transform duration-500 hover:scale-105 pointer-events-auto cursor-pointer"
           loading="eager"

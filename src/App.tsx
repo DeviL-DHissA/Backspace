@@ -1,5 +1,5 @@
 import { useLayoutEffect } from 'react';
-import { BrowserRouter, Navigate, Route, Routes, useLocation } from 'react-router-dom';
+import { HashRouter, Navigate, Route, Routes, useLocation } from 'react-router-dom';
 import { AnimatePresence, motion, useScroll } from 'framer-motion';
 import { Navbar } from './components/layout/Navbar';
 import { Footer } from './components/layout/Footer';
@@ -32,5 +32,5 @@ function ScrollProgress() {
 }
 
 export default function App() {
-  return <BrowserRouter><ScrollProgress /><Navbar /><main id="main-content"><SiteRoutes /></main><Footer /></BrowserRouter>;
+  return <HashRouter><ScrollProgress /><Navbar /><main id="main-content"><SiteRoutes /></main><Footer /></HashRouter>;
 }

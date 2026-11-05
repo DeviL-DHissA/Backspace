@@ -13,7 +13,7 @@ export function Navbar() {
   return <header className="site-header">
     <div className="nav-inner">
       <Link className="brand" to="/" aria-label="BackSpace home" onClick={() => setOpen(false)}>
-        <span className="brand-crop"><img src="/assets/images/backspace-logo.png" alt="" /></span>
+        <span className="brand-crop"><img src={`${import.meta.env.BASE_URL}assets/images/backspace-logo.png`} alt="" /></span>
       </Link>
       <nav className={`nav-links ${open ? 'is-open' : ''}`} aria-label="Main navigation">
         {links.map(link => <NavLink key={link.to} to={link.to} onClick={() => setOpen(false)} className={({ isActive }) => isActive || (link.to === '/work' && location.pathname === '/cwr-network') ? 'active' : ''}>{({ isActive }) => <>{link.label}{(isActive || (link.to === '/work' && location.pathname === '/cwr-network')) && <motion.span layoutId="nav-active-line" className="nav-active-line" transition={{ duration: reduceMotion ? 0 : 0.28, ease: [0.23, 1, 0.32, 1] }} />}</>}</NavLink>)}

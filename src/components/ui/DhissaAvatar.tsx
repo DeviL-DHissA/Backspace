@@ -32,7 +32,7 @@ export const DhissaAvatar: React.FC<DhissaAvatarProps> = ({
       >
         {!imgError ? (
           <img
-            src="/assets/images/dhissa_logo.png"
+            src={`${import.meta.env.BASE_URL}assets/images/dhissa_logo.png`}
             alt="DHISSA logo"
             onError={() => setImgError(true)}
             className="w-full h-full object-cover object-center"
